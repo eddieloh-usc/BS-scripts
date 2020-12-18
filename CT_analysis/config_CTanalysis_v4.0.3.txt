@@ -1,0 +1,96 @@
+######################################################################
+## This config file is made up of two TAB-SEPARATED columns. 
+## The first column lists the parameter names and MUST NOT BE CHANGED. 
+## The second column is the value setting for the parameter, and must 
+## be in the form of a continuous string of characters WITHOUT SPACES.
+##
+## The command to run the entire analysis is... 
+## "perl run_CTanalysis_v4.0.3.pl configfilename"
+##
+######################################################################
+
+Parameter	Value
+Fastq_Dir	./Example/fastq	
+Output_Dir	./Example/Results	
+Insert_File	./Example/insert_reference.fa
+Left_Adapter	GGGGACAAAGGAAAAGGTTGG
+Right_Adapter	GGCCCCCACCCACTCCAT
+Trim_Length	220
+Run_Trim	Yes
+Remove_dup	Yes
+Quality_cutoff	5
+R1match_cutoff	150
+R2match_cutoff	150
+R1ct_cutoff_A	00
+R2ct_cutoff_A	00
+R1ga_cutoff_A	02
+R2ga_cutoff_A	02
+R1ga_cutoff_B	00
+R2ga_cutoff_B	00
+R1ct_cutoff_B	02
+R2ct_cutoff_B	02
+R1others_cutoff	02
+R2others_cutoff	02
+
+##### Parameter Definitions and Notes ####################################
+## Fastq_Dir   - absolute or relative path to the fastq directory containing 
+##               the sample fastq files. Only paired-end sequence files with 
+##               _R1_ and _R2_ present in the filenames will accepted by the 
+##               program. It does not matter whether the fastq files are 
+##               gzipped or not. 
+## Output_Dir  - absolute or relative path to the directory to store output 
+##               files. This directory will be created if it doesn't currently 
+##               exist 
+## Insert_File - absolute or relative path to insert reference file formatted 
+##               in FASTA format
+## Left_Adapter  - the adapter sequence that will be trimmed off the LEFT side 
+##                 of the R1 file (i.e. the bases just off the left side of the 
+##                 insert)
+## Right_Adapter - the adapter sequence that will be trimmed off the LEFT side 
+##                 of the R2 file (i.e. the REVERSE COMPLEMENT of the bases 
+##                 just off the right side of the insert sequence
+## Trim_Length - the length to trim the sequences down to
+## Run_Trim    - please indicate whether or not to run trimming step (Yes/No). 
+## Remove_Dup    - whether to remove duplicates (Yes/No)
+## Quality_cutoff - mismatches are counted only when quality score is at least 
+##                  this cutoff. Also used in inconsistency determination i.e.
+##                  inconsistent called only when good quality bases are 
+##                  different
+##
+## Adapter Example:for a fragment ACACTTINSERTSEQUENCEGGCTTA, the left adapter 
+##                 needs to be ACACTT and the right adapter needs to be TAAGCC 
+##                 in order for trimming to leave only INSERTSEQUENCE remaining
+##
+## The various cutoff variables are used in the condition rules below:
+##
+## Condition 1: (($nummatchR1 >= R1match_cutoff)&&($nummatchR2 >= R2match_cutoff))
+##
+## Condition 2A:( (($numctR1 > R1ct_cutoff_A)&&($numctR2 > R2ct_cutoff_A)) && 
+##                (($numgaR1 <= R1ga_cutoff_A)&&($numgaR2 <= R2ga_cutoff_A)) && 
+##                (($numothersR1 <= R1others_cutoff)&&($numothersR2 <= R2others_cutoff)) )
+##              OR
+## Condition 2B:( (($numgaR1 > R1ga_cutoff_B)&&($numgaR2 > R2ga_cutoff_B)) && 
+##                (($numctR1 <= R1ct_cutoff_B)&&($numctR2<= R2ct_cutoff_B)) && 
+##                (($numothersR1 <= R1others_cutoff)&&($numothersR2 <= R2others_cutoff)) )
+##
+###############################################################################
+
+
+
+
+#TODO - Plotting
+#R_PlotScript	./04_plotgraph_v3.1.R
+#Plot_Highlight	ATCTCACCGCAGCGGCTCTGCCC
+#Plot_ymin	-30
+#Plot_ymax	30
+#Plot_xmin	05
+#Plot_xmax	265
+
+## Script04    - absolute or relative path to the 04_plotgraph.R script
+## Plot_Highlight- sequence within the insert sequence to be highlighted in the
+##                 final output plot 
+## Plot_ymin   - y-axis minimum (negative number expected, will be rounded to 
+##               the next lowest 5)
+## Plot_ymax   - y-axis maximum (will be rounded to the next highest 5)
+## Plot_xmin   - nucleotide number to start plotting (wrt insert positions) 
+## Plot_xmax   - nucleotide number to end plotting (wrt insert positions)
