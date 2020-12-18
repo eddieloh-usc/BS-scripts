@@ -1,0 +1,78 @@
+This is cutadapt 1.15 with Python 3.6.9
+Command line parameters: -g GGGGACAAAGGAAAAGGTTGG -G GGCCCCCACCCACTCCAT --pair-filter=any --discard-untrimmed -o ./Example/Results/TrimmedFastq/sampleD_L001_R1_001.pretrimmed.fastq.gz -p ./Example/Results/TrimmedFastq/sampleD_L001_R2_001.pretrimmed.fastq.gz ./Example/fastq/sampleD_L001_R1_001.fastq.gz ./Example/fastq/sampleD_L001_R2_001.fastq.gz
+Running on 1 core
+Trimming 2 adapters with at most 10.0% errors in paired-end mode ...
+Finished in 0.25 s (31 us/read; 1.93 M reads/minute).
+
+=== Summary ===
+
+Total read pairs processed:              8,000
+  Read 1 with adapter:                   7,861 (98.3%)
+  Read 2 with adapter:                   7,790 (97.4%)
+Pairs written (passing filters):         7,761 (97.0%)
+
+Total basepairs processed:     4,016,000 bp
+  Read 1:     2,008,000 bp
+  Read 2:     2,008,000 bp
+Total written (filtered):      3,538,712 bp (88.1%)
+  Read 1:     1,746,355 bp
+  Read 2:     1,792,357 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GGGGACAAAGGAAAAGGTTGG; Type: regular 5'; Length: 21; Trimmed: 7861 times.
+
+No. of allowed errors:
+0-9 bp: 0; 10-19 bp: 1; 20-21 bp: 2
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	3	0.0	2	0 3
+24	9	0.0	2	0 2 7
+25	163	0.0	2	41 113 9
+26	7630	0.0	2	7401 219 10
+27	52	0.0	2	12 38 2
+28	4	0.0	2	0 0 4
+
+=== Second read: Adapter 2 ===
+
+Sequence: GGCCCCCACCCACTCCAT; Type: regular 5'; Length: 18; Trimmed: 7790 times.
+
+No. of allowed errors:
+0-9 bp: 0; 10-18 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+15	1	0.0	1	0 1
+17	1	0.0	1	0 1
+18	5	0.0	1	4 1
+19	222	0.0	1	0 222
+20	7529	0.0	1	7276 253
+21	19	0.0	1	2 17
+24	3	0.0	1	3
+62	1	0.0	1	0 1
+96	3	0.0	1	2 1
+140	6	0.0	1	6
+
+This is cutadapt 1.15 with Python 3.6.9
+Command line parameters: -l 220 -m 220 --pair-filter=any -o ./Example/Results/TrimmedFastq/sampleD_L001_R1_001.trimmed.fastq.gz -p ./Example/Results/TrimmedFastq/sampleD_L001_R2_001.trimmed.fastq.gz ./Example/Results/TrimmedFastq/sampleD_L001_R1_001.pretrimmed.fastq.gz ./Example/Results/TrimmedFastq/sampleD_L001_R2_001.pretrimmed.fastq.gz
+Running on 1 core
+Trimming 0 adapters with at most 10.0% errors in paired-end mode ...
+Finished in 0.13 s (17 us/read; 3.61 M reads/minute).
+
+=== Summary ===
+
+Total read pairs processed:              7,761
+  Read 1 with adapter:                       0 (0.0%)
+  Read 2 with adapter:                       0 (0.0%)
+Pairs that were too short:                   6 (0.1%)
+Pairs written (passing filters):         7,755 (99.9%)
+
+Total basepairs processed:     3,538,712 bp
+  Read 1:     1,746,355 bp
+  Read 2:     1,792,357 bp
+Total written (filtered):      3,412,200 bp (96.4%)
+  Read 1:     1,706,100 bp
+  Read 2:     1,706,100 bp
+
+ 
